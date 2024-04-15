@@ -517,6 +517,13 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = null;
+            pictureBox2.Image = null;
+            pictureBox3.Image = null;
+        }
+
         private void imageAdditionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bitmap Img1 = new Bitmap(orgImg);
