@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,11 +65,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drawHistogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -166,11 +175,12 @@
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.sizeChangeToolStripMenuItem,
-            this.imageAlgebraToolStripMenuItem});
+            this.imageAlgebraToolStripMenuItem,
+            this.histogramToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(3234, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(3234, 40);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -179,30 +189,30 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadImageToolStripMenuItem,
             this.saveResultImageToolStripMenuItem,
-            this.exitToolStripMenuItem,
-            this.clearToolStripMenuItem});
+            this.clearToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 38);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 36);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // loadImageToolStripMenuItem
             // 
             this.loadImageToolStripMenuItem.Name = "loadImageToolStripMenuItem";
-            this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(341, 44);
+            this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.loadImageToolStripMenuItem.Text = "Load Image";
             this.loadImageToolStripMenuItem.Click += new System.EventHandler(this.loadImageToolStripMenuItem_Click);
             // 
             // saveResultImageToolStripMenuItem
             // 
             this.saveResultImageToolStripMenuItem.Name = "saveResultImageToolStripMenuItem";
-            this.saveResultImageToolStripMenuItem.Size = new System.Drawing.Size(341, 44);
+            this.saveResultImageToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.saveResultImageToolStripMenuItem.Text = "Save Result Image";
             this.saveResultImageToolStripMenuItem.Click += new System.EventHandler(this.saveResultImageToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(341, 44);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -345,11 +355,51 @@
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
+            // histogramToolStripMenuItem
+            // 
+            this.histogramToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.drawHistogramToolStripMenuItem});
+            this.histogramToolStripMenuItem.Name = "histogramToolStripMenuItem";
+            this.histogramToolStripMenuItem.Size = new System.Drawing.Size(144, 36);
+            this.histogramToolStripMenuItem.Text = "Histogram";
+            // 
+            // drawHistogramToolStripMenuItem
+            // 
+            this.drawHistogramToolStripMenuItem.Name = "drawHistogramToolStripMenuItem";
+            this.drawHistogramToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.drawHistogramToolStripMenuItem.Text = "Draw Histogram";
+            this.drawHistogramToolStripMenuItem.Click += new System.EventHandler(this.drawHistogramToolStripMenuItem_Click);
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(1734, 603);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Red";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Green";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Blue";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(1179, 831);
+            this.chart1.TabIndex = 20;
+            this.chart1.Text = "chart1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(3234, 1543);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox3);
@@ -376,6 +426,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,6 +466,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem histogramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem drawHistogramToolStripMenuItem;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 

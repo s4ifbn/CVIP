@@ -524,6 +524,39 @@ namespace WindowsFormsApplication1
             pictureBox3.Image = null;
         }
 
+        private void drawHistogramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int[] redHisto = new int[256];
+            int[] greenHisto = new int[256];
+            int[] blueHisto = new int[256];
+
+            for (int y = 0; y < pictureBox1.Height; y++) {
+
+                for (int x = 0; x < pictureBox1.Width; x++) {
+
+                    Color pixel = orgImg.GetPixel(x, y);
+                    int r = pixel.R;
+                    int g = pixel.G;
+                    int b = pixel.B;
+
+                    redHisto[r]++;
+                    greenHisto[g]++;
+                    blueHisto[b]++;
+                }
+            }
+
+            for (int i = 0; i < 256; i++) {
+
+                chart1.Series["Red"].Points.AddXY(i, redHisto[i] );
+                chart1.Series["Blue"].Points.AddXY(i, blueHisto[i]);
+                chart1.Series["Green"].Points.AddXY(i, greenHisto[i]);
+
+
+
+
+            }
+        }
+
         private void imageAdditionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bitmap Img1 = new Bitmap(orgImg);
